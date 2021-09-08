@@ -1,0 +1,10 @@
+bootstrapper.sh
+buildwindow.bat
+buildwindow.sh
+logonVault.bat
+logonVault.ps1
+omnisharp.json
+runBootstrapper.bat
+nuget.config 
+.config
+build/

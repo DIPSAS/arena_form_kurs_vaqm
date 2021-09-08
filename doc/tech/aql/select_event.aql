@@ -1,0 +1,13 @@
+SELECT
+    c/uid/value AS CID,
+    o/data[at0001]/events[at0002]/time/value AS Time,
+    o/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value/value AS Text,
+    o/protocol[at0005]/items[openEHR-EHR-CLUSTER.care_entry_type.v0]/items[at0001]/value/value AS Type
+FROM
+    COMPOSITION c
+        CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.progress_note.v1]
+WHERE
+    o/protocol[at0005]/items[openEHR-EHR-CLUSTER.care_entry_type.v0]/items[at0001]/value/defining_code/terminology_id/value = 'HN_GENERISK_KOLONNE'
+    AND 
+    o/protocol[at0005]/items[openEHR-EHR-CLUSTER.care_entry_type.v0]/items[at0001]/value/defining_code/code_string = '02'
+LIMIT 10

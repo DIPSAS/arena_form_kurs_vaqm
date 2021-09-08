@@ -1,0 +1,50 @@
+archetype (adl_version=1.4)
+	openEHR-EHR-COMPOSITION.care_entry_dips.v0
+
+concept
+	[at0000]	-- Helseregistrering
+language
+	original_language = <[ISO_639-1::nb]>
+description
+	original_author = <
+		["name"] = <"Bjørn Næss">
+		["email"] = <"bna@dips.no">
+		["organisation"] = <"DIPS AS">
+		["date"] = <"2021-09-08">
+	>
+	details = <
+		["nb"] = <
+			language = <[ISO_639-1::nb]>
+			purpose = <"Utviklet for å dekke behovet i Helse Nord med tanke på å lage nye kolonner i pasientliste ">
+			use = <"Benyttes for generelle registreringer til pasientliste. ">
+			misuse = <"Benyttes ikke for generelle kliniske kontakter. Benytt \"ENCOUNTER\"">
+			copyright = <"">
+		>
+	>
+	lifecycle_state = <"0">
+	other_contributors = <>
+	other_details = <
+		["MD5-CAM-1.0.1"] = <"DDCBD9D317C795C1F16ADB44D38D8B5E">
+	>
+
+definition
+	COMPOSITION[at0000] matches {	-- Helseregistrering
+		category matches {
+			DV_CODED_TEXT matches {
+				defining_code matches {[openehr::433]}
+			}
+		}
+	}
+
+ontology
+	term_definitions = <
+		["nb"] = <
+			items = <
+				["at0000"] = <
+					text = <"Helseregistrering">
+					description = <"En generell struktur for å registrere ulike data som skal vises i pasientlister i DIPS Arena (primært).">
+					comment = <"Utviklet for å dekke behovet i Helse Nord med tanke på å lage nye kolonner i pasientliste ">
+				>
+			>
+		>
+	>

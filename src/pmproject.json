@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "description": "TryggArena GenericColumns",
+  "owners": [
+    "BIFROST <bifrost@dips.no>"
+  ],
+  "tags": [
+    "dips",
+    "bifrost"
+  ],
+  "authors": [
+    "Bjørn Næss <bna@dips.no>"
+  ],
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/templates",
+    "src/typescript",
+    ".gitignore"
+  ],
+  "distributions": [
+    {
+      "id": "no.dips.tryggarena.genericcolumns.resources",
+      "version": {
+        "major": 0,
+        "minor": 1
+      },
+      "include": [
+        "*"
+      ]
+    }
+  ]
+}
