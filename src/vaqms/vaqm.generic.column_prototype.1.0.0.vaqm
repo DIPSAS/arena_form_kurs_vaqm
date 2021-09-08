@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<VaqmConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Id="cec1c650-bf93-4da8-b3ae-a27d619f15e5" Oid="vaqm.generic.column_prototype" Name="Prototype Generisk Kolonne" Version="1.0.0" Approved="true" CreatedByAuthor="bna" Created="2021-09-09T00:14:10.0236871+02:00" Imported="false" VersionComment="Initial" xmlns="http://www.dips.no/vaqmconfig">
+  <AqlBindings>
+    <AqlBinding Id="d5d80155-1469-4e63-9e7f-68a32b48e370" Oid="oid" Name="Registreringer" DefaultArchetypeId="openEHR-EHR-OBSERVATION.progress_note.v1">
+      <BaseAql>SELECT c,o, t FROM    COMPOSITION c    CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.progress_note.v1] CONTAINS CLUSTER t[openEHR-EHR-CLUSTER.care_entry_type.v0]</BaseAql>
+      <Paths>
+        <Path Id="cid" IdentifierRef="c" Value="/uid/value" DataType="String" />
+        <Path Id="when" IdentifierRef="o" Value="/data[at0001]/events[at0002]/time" AdminDescription="" DataType="" />
+        <Path Id="note" IdentifierRef="o" Value="/data[at0001]/events[at0002]/data[at0003]/items[at0004]/value/value" AdminDescription="" DataType="String" />
+        <Path Id="term_value" IdentifierRef="t" Value="/items[at0001]/value/defining_code/terminology_id/value" AdminDescription="" DataType="String" />
+        <Path Id="term_code" IdentifierRef="t" Value="/items[at0001]/value/defining_code/code_string" AdminDescription="" DataType="String" />
+      </Paths>
+      <WhereExpressions>
+        <WhereExpression Id="mat" Path="$term_code" Operator="EQ" Value="'01'" AdminDescription="" />
+        <WhereExpression Id="tilsyn" Path="$term_code" Operator="EQ" Value="'02'" AdminDescription="" />
+        <WhereExpression Id="hn" Path="$term_value" Operator="EQ" Value="'HN_GENERISK_KOLONNE'" AdminDescription="" />
+      </WhereExpressions>
+      <OrderByExpressions>
+        <OrderByExpression Id="last" Value="$when/value" Ascending="false" />
+      </OrderByExpressions>
+      <Predicates>
+        <Predicate Id="MAT" WhereRef="$mat AND $hn" OrderByRef="$last" />
+      </Predicates>
+      <KeyValues />
+    </AqlBinding>
+  </AqlBindings>
+  <DataElements>
+    <DataElement Id="b30fbee1-2667-4100-93a2-4046ad1c4453" Oid="generisk.col.mat" Name="Mat" AdminName="Mat Generisk kolonne" Description="Kolonne for registrering av mat " Categories="" DisplayFormat="$MAT.note" SortFormat="$MAT.when" SortFormatDataType="datetime" IsEditable="false" XFormat="" YFormat="" RangeFormat="">
+      <FormatExpressions />
+      <KeyValues />
+    </DataElement>
+  </DataElements>
+  <KeyValues />
+</VaqmConfiguration>
